@@ -48,19 +48,31 @@ export const Info = styled.div`
 export const Quantity = styled.input`
     font-size: 16px;
     color: #666;
-    padding: 6px;
+    text-align: end;
     border-radius: 5px;
     width: 40px;
     height: 40px;
     border: 1px solid #0676d9;
-    text-align: center;
 `;
 export const Subtotal = styled.div`
     display: flex;    
     font-weight: 600;
     font-size: 16px;
     align-items: right;
+    align-items: center;
     p{
         margin-right: 10px;
+    }
+`;
+export const Total = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    p {
+        color: #666;
+    }
+    strong{
+        margin-left: 10px
     }
 `;

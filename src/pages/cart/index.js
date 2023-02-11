@@ -1,10 +1,24 @@
-import React, { useContext } from "react";
-import { Container, ContainerList, TravelItems, Info, Quantity, Subtotal } from './styles'
+import React, { useContext, useState } from "react";
+import { Container, ContainerList, TravelItems, Info, Quantity, Subtotal, Total } from './styles'
 import CartContext from "../../context/cart";
 import {MdDelete} from 'react-icons/md'
 
 function Cart() {
     const {state, setState} = useContext(CartContext);
+    const [totalF, setTotalF] = useState("");
+    let total = "";
+    let totalC = 0;
+
+    const totalCompra = () => {
+        state.cart.map(r=>{
+            total = r.quantity * r.price;
+            totalC = totalC + total;
+        })
+        setTotalF(totalC)
+        console.log("total:", total)
+        console.log("total F:", totalF) 
+    }
+
     return (
       <Container>
         <ContainerList>
@@ -24,7 +38,12 @@ function Cart() {
                      </Subtotal>
              </TravelItems>
             ))}
+            <Total>
+               <p>TOTAL</p> 
+               <strong>${totalF}</strong>
+            </Total>
         </ContainerList>
+       
       </Container>
     );
 }
